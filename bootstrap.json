@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-de0d9eb7",
+      "instance_type": "c3.large",
+      "ssh_username": "ubuntu",
+      "ami_name": "Bootstrap 12.04 {{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "upgrade-pre.sh",
+        "upgrade-post.sh",
+        "bootstrap.sh"
+      ]
+    }
+  ]
+}
